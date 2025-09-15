@@ -40,11 +40,11 @@ export const AboutSection = () => {
                 Get In Touch
               </a>
               <a
-                download="DULAY, Vince Karlo-Resume-Web Developer"
+                target="_blank"
                 href="DULAY, Vince Karlo-Resume-Web Developer.pdf"
                 className="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary/10 transition-colors duration-300"
               >
-                Download CV
+                View CV
               </a>
             </div>
           </div>

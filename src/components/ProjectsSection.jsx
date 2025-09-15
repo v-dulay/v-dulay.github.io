@@ -1,54 +1,42 @@
 import { ArrowRight, ExternalLink, Github } from "lucide-react";
 
 const projects = [
-  // {
-  //   id: 1,
-  //   title: "Project #1",
-  //   description: "A beautiful landing page for my upcoming project 1",
-  //   image: "/projects/project1.png",
-  //   tags: ["React", "TailwindCSS", "Supabase"],
-  //   demoUrl: "#",
-  //   githubUrl: "#",
-  // },
-  // {
-  //   id: 2,
-  //   title: "Project #2",
-  //   description: "A beautiful landing page for my upcoming project 2",
-  //   image: "/projects/project2.png",
-  //   tags: ["TypeScript", "D3.js", "Next.js"],
-  //   demoUrl: "#",
-  //   githubUrl: "#",
-  // },
-  // {
-  //   id: 3,
-  //   title: "Project #3",
-  //   description: "A beautiful landing page for my upcoming project 3",
-  //   image: "/projects/project3.png",
-  //   tags: ["React", "Node.js", "Stripe"],
-  //   demoUrl: "#",
-  //   githubUrl: "#",
-  // },
   {
-    id: 4,
+    id: 1,
     title: "RecoMed",
     description:
       "RecoMed is a web-based records management system for an OB-GYN clinic that I helped design and develop, featuring an integrated appointment queue and a user-friendly interface for both staff and patients.",
-    image: "/projects/project4.png",
+    image: "/projects/project1.png",
     tags: ["HTML", "CSS", "Javascript", "PHP"],
     demoUrl:
-      "https://docs.google.com/document/d/1bNQdnFR4stDQqaL63LNnCYMEEiT_H-EnuAidRWEkn18/edit?tab=t.0",
-    githubUrl: "#",
+      "https://drive.google.com/file/d/1b7vvdTD5xzv8ntbgsac3zsHHa_n0nkI2/view?usp=sharing",
   },
   {
-    id: 5,
+    id: 2,
     title: "AR.TE.CU",
     description:
       "AR.TE.CU is a Figma prototype that connects users with artists for custom product designs—like phone cases or headphones—while using artificial intelligence to visualize the artwork on the item in real time before confirming the commission.",
-    image: "/projects/project5.png",
+    image: "/projects/project2.png",
     tags: ["Figma"],
     demoUrl:
       "https://www.figma.com/proto/MjmAtXbcv12aON44AgbnrG/AR.TE.CU-High-fidelity-Wireframes?node-id=84-780&starting-point-node-id=84%3A780",
-    githubUrl: "#",
+  },
+  {
+    id: 3,
+    title: "Vince's Movie Catalog",
+    description:
+      "Vince’s Movie Catalog makes it simple to discover, explore, and track the movies you’ll love. With a modern, cinematic design, it offers quick search, smart categories, and a smooth browsing experience—helping you find your next favorite film effortlessly.",
+    image: "/projects/project3.png",
+    tags: [
+      "Node.js",
+      "React.js",
+      "Vite",
+      "TailwindCSS",
+      "Appwrite",
+      "TMDB API",
+    ],
+    demoUrl: "https://vince-movie-catalog.vercel.app",
+    githubUrl: "https://github.com/v-dulay/vince-movie-catalog",
   },
 ];
 
@@ -66,7 +54,7 @@ export const ProjectsSection = () => {
           crafter with attention to detail, performance, and user experience.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, key) => (
             <div
               key={key}
@@ -100,20 +88,23 @@ export const ProjectsSection = () => {
                     >
                       <ExternalLink size={20} />
                     </a>
-                    {/* <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      className="text-foreground/80 hover:text-primary transition-colors duration-300"
-                    >
-                      <Github size={20} />
-                    </a> */}
+                    {project.githubUrl && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-foreground/80 hover:text-primary transition-colors duration-300"
+                      >
+                        <Github size={20} />
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>
             </div>
           ))}
         </div>
-        {/* <div className="text-center mt-12">
+        <div className="text-center mt-12">
           <a
             className="cosmic-button w-fit flex items-center mx-auto gap-2"
             target="_blank"
@@ -121,7 +112,7 @@ export const ProjectsSection = () => {
           >
             Check my Github <ArrowRight size={16} />
           </a>
-        </div> */}
+        </div>
       </div>
     </section>
   );

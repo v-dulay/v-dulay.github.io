@@ -1,23 +1,27 @@
-import {
-  Facebook,
-  Instagram,
-  Linkedin,
-  Mail,
-  MapPin,
-  Phone,
-  Send,
-  Twitter,
-} from "lucide-react";
+import { Facebook, Linkedin, Mail, MapPin, Phone, Send } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
+import emailjs from "emailjs-com";
 
 export const ContactSection = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    emailjs.sendForm(
+      import.meta.env.VITE_SERVICE_ID,
+      import.meta.env.VITE_TEMPLATE_ID,
+      e.target,
+      import.meta.env.VITE_PUBLIC_KEY
+    );
 
     setIsSubmitting(true);
 
@@ -27,6 +31,7 @@ export const ContactSection = () => {
         description: "Thank you for your message. I'll get back to you soon.",
       });
       setIsSubmitting(false);
+      setFormData({ name: "", email: "", message: "" });
     }, 1500);
   };
   return (
@@ -88,16 +93,13 @@ export const ContactSection = () => {
             <div className="pt-8">
               <h4 className="font-medium mb-4">Connect With Me</h4>
               <div className="flex space-x-4 justify-center">
-                <a href="#" target="_blank">
+                <a
+                  href="https://linkedin.com/in/vince-karlo-dulay"
+                  target="_blank"
+                >
                   <Linkedin />
                 </a>
-                <a href="#" target="_blank">
-                  <Twitter />
-                </a>
-                <a href="#" target="_blank">
-                  <Instagram />
-                </a>
-                <a href="#" target="_blank">
+                <a href="https://facebook.com/VKDulay6" target="_blank">
                   <Facebook />
                 </a>
               </div>
@@ -121,8 +123,12 @@ export const ContactSection = () => {
                   id="name"
                   name="name"
                   required
+                  value={formData.name}
                   className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden focus:ring-2 focus:ring-primary"
                   placeholder="Vince Karlo Dulay..."
+                  onChange={(e) =>
+                    setFormData({ ...formData, name: e.target.value })
+                  }
                 />
               </div>
               <div>
@@ -136,9 +142,13 @@ export const ContactSection = () => {
                   type="email"
                   id="email"
                   name="email"
+                  value={formData.email}
                   required
                   className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden focus:ring-2 focus:ring-primary"
                   placeholder="john@gmail.com"
+                  onChange={(e) =>
+                    setFormData({ ...formData, email: e.target.value })
+                  }
                 />
               </div>
               <div>
@@ -152,8 +162,12 @@ export const ContactSection = () => {
                   id="message"
                   name="message"
                   required
+                  value={formData.message}
                   className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden focus:ring-2 focus:ring-primary resize-none"
                   placeholder="Hello, I'd like to talk about..."
+                  onChange={(e) =>
+                    setFormData({ ...formData, message: e.target.value })
+                  }
                 />
               </div>
               <div>
